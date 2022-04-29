@@ -1,0 +1,58 @@
+import org.apache.tools.ant.filters.*
+
+plugins {
+    id 'com.ryanbester.signaura.java-conventions'
+}
+
+configurations {
+    modules
+    compileOnly.extendsFrom(modules)
+}
+
+dependencies {
+    modules project(':signaura-compat')
+    modules project(':v1_16_R3')
+    modules project(':v1_18_R1')
+    compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    compileOnly 'dev.jorel:commandapi-core:7.0.0'
+    implementation 'org.geysermc.floodgate:api:2.0-SNAPSHOT'
+}
+
+processResources {
+    filter ReplaceTokens, tokens: [
+            "version": version
+    ]
+}
+
+task packageAll(type: Jar) {
+    assemble.dependsOn(packageAll)
+
+    from sourceSets.main.output
+    from {
+        configurations.modules.collect { it.exists() ? (it.isDirectory() ? it : zipTree(it)) : files().asFileTree }
+    }
+
+    archivesBaseName = "SignAura-Bukkit"
+}
+
+task copyJar(type: Copy) {
+    packageAll.finalizedBy copyJar
+    from packageAll
+    into new File(rootDir, 'build/libs')
+}
+
+jar {
+    dependsOn processResources
+    baseName "SignAura-Bukkit"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+description = 'SignAura-bukkit'

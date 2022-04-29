@@ -1,0 +1,24 @@
+# Whether only the owners of signs can edit them once they have been placed.
+# The owner is determined to be the player who placed the sign.
+only-owners-can-edit: true
+
+# If enabled, formatting codes prefixed with an ampersand (&) are parsed.
+# Allows for coloured signs.
+parse-formatting-codes: false
+
+# [BETA] Enable a legacy interface to allow Bedrock players to edit signs.
+# This requires the Geyser and Floodgate plugins.
+allow-bedrock-editing: true
+
+# Whether to log error details to the server log.
+log-errors: true
+
+# The database connection details to save the sign owners.
+database:
+  # The type of database.
+  # Can be one of: flatfile, sqlite.
+  type: flatfile
+
+  # The database file filename
+  # Only valid for flatfile and sqlite database types.
+  filename: signowners.txt

@@ -1,0 +1,10 @@
+main: com.ryanbester.signaura.bukkit.SignAura
+name: SignAura
+version: @version@
+api-version: 1.16
+author: Ryan Bester
+description: Allows you to edit sign text.
+website: "https://github.com/ryanbester/signaura"
+softdepend:
+  - CommandAPI
+  - floodgate

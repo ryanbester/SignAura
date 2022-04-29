@@ -1,0 +1,12 @@
+no-permission: "&cYou do not have permission to execute this command!"
+only-in-game: "&cThis command can only be executed in-game!"
+command-reload-failed: "&cCould not reload SignAura. Please check your configuration files."
+command-reload-success: "&aSuccessfully reloaded SignAura."
+command-edit-not-sign: "&cThe specified block is not a sign!"
+command-edit-too-long: "&cLine %%line%% must be no more than 15 characters!"
+command-edit-failed: "&cCould not edit the sign."
+command-edit-success: "&aEdited the sign."
+
+sign-wrong-owner: "&cYou don't own this sign!"
+sign-no-permission: "&cYou do not have permission to edit signs!"
+sign-bedrock-unsupported: "&cSign editing is not supported for Bedrock players!"
